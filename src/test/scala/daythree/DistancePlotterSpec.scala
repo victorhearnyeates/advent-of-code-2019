@@ -66,4 +66,14 @@ class DistancePlotterSpec extends FlatSpec with Matchers {
 
     output shouldBe 6
   }
+
+  "calculateDistance" should "Work out the number of steps that have been taken as well" in {
+    val input = Vector(Position(2,0), Position(1,0), Position(1,1))
+
+    val output = calculateDistance(input)
+
+    output(Position(2,0)) shouldBe 1
+    output(Position(1,0)) shouldBe 2
+    output(Position(1,1)) shouldBe 3
+  }
 }

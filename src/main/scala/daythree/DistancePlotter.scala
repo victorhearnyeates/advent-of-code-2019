@@ -45,4 +45,8 @@ object DistancePlotter {
     val commonPositions = v1.intersect(v2).tail
     commonPositions.map(x => abs(x.distance)).min
   }
+
+  def calculateDistance(seq: Seq[Position]): Map[Position, Int] = seq.zipWithIndex.map {
+    case (position, distance) => (position, distance + 1)
+  }.toMap
 }
