@@ -24,4 +24,6 @@ object Main extends App {
   val input2 = inputs.tail.head.split(",").toList
   val minimumDistance = DistancePlotter.parseMinimum(input1, input2)
   println("The minimum distance is " + minimumDistance)
+  val intersectionDistance = DistancePlotter.intersectionDistance(input1, input2)
+  println("The distance to the first intersection is " + intersectionDistance)
 }

@@ -46,7 +46,22 @@ object DistancePlotter {
     commonPositions.map(x => abs(x.distance)).min
   }
 
-  def calculateDistance(seq: Seq[Position]): Map[Position, Int] = seq.zipWithIndex.map {
-    case (position, distance) => (position, distance + 1)
+  def calculateDistance(v: Vector[Position]): Map[Position, Int] = v.zipWithIndex.map {
+    case (position, distance) => (position, distance)
   }.toMap
+
+  def firstIntersection(v1: Vector[Position], v2: Vector[Position]): (Position, Int) = {
+    val distanceV1 = calculateDistance(v1)
+    val distanceV2 = calculateDistance(v2)
+    val commonPositions = v1.intersect(v2).tail
+    val distancesOfCP = commonPositions.map(p => (p, distanceV1(p) + distanceV2(p)))
+    distancesOfCP.minBy(_._2)
+  }
+
+  def intersectionDistance(xs: List[String], ys: List[String]): Int = {
+    val v1 = parseList(xs)
+    val v2 = parseList(ys)
+
+    firstIntersection(v1, v2)._2
+  }
 }

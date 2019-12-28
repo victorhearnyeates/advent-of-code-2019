@@ -76,4 +76,12 @@ class DistancePlotterSpec extends FlatSpec with Matchers {
     output(Position(1,0)) shouldBe 2
     output(Position(1,1)) shouldBe 3
   }
+
+  "firstIntersection" should "take in two lists (vectors) of positions an return the first intersection of the two of them" in {
+    val input1 = Vector(Position(0,1), Position(0,2), Position(1,2), Position(1,3))
+    val input2 = Vector(Position(1,1), Position(1,2), Position(2,2), Position(2,1))
+
+    val output = firstIntersection(input1, input2)
+    output shouldBe (Position(1,2), 5)
+  }
 }
