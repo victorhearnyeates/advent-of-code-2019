@@ -1,3 +1,4 @@
+import dayfour.SecureContainer
 import dayone.FuelCount
 import daytwo.Intcode
 import daythree.DistancePlotter
@@ -26,4 +27,9 @@ object Main extends App {
   println("The minimum distance is " + minimumDistance)
   val intersectionDistance = DistancePlotter.intersectionDistance(input1, input2)
   println("The distance to the first intersection is " + intersectionDistance)
+
+  //Day Four
+  val passwordInput = "168630-718098"
+  val numDifferentPasswords = SecureContainer.numPassords(passwordInput)
+  println(s"There are $numDifferentPasswords potential passwords")
 }
