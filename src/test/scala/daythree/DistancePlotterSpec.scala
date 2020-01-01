@@ -50,8 +50,8 @@ class DistancePlotterSpec extends FlatSpec with Matchers {
   }
 
   "minimumDistance" should "find the union of two lists of positions" in {
-    val v1 = Vector(Position(1,0), Position(2,0), Position(1,2))
-    val v2 = Vector(Position(2,0), Position(1,0), Position(1,1))
+    val v1 = Vector(Position(0,0), Position(1,0), Position(2,0), Position(1,2))
+    val v2 = Vector(Position(0,0), Position(2,0), Position(1,0), Position(1,1))
 
     val output = minimumDistance(v1, v2)
 
@@ -72,14 +72,14 @@ class DistancePlotterSpec extends FlatSpec with Matchers {
 
     val output = calculateDistance(input)
 
-    output(Position(2,0)) shouldBe 1
-    output(Position(1,0)) shouldBe 2
-    output(Position(1,1)) shouldBe 3
+    output(Position(2,0)) shouldBe 0
+    output(Position(1,0)) shouldBe 1
+    output(Position(1,1)) shouldBe 2
   }
 
   "firstIntersection" should "take in two lists (vectors) of positions an return the first intersection of the two of them" in {
-    val input1 = Vector(Position(0,1), Position(0,2), Position(1,2), Position(1,3))
-    val input2 = Vector(Position(1,1), Position(1,2), Position(2,2), Position(2,1))
+    val input1 = Vector(Position(0,0), Position(0,1), Position(0,2), Position(1,2), Position(1,3))
+    val input2 = Vector(Position(0,0), Position(1,1), Position(1,2), Position(2,2), Position(2,1))
 
     val output = firstIntersection(input1, input2)
     output shouldBe (Position(1,2), 5)
