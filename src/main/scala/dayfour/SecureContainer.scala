@@ -18,7 +18,7 @@ object SecureContainer {
     val lower = split(0).toInt
     val upper = split(1).toInt
 
-    lower until upper filter doesntDecrease filter ((i: Int) => moreThanTwo(i.toString)) count ((i: Int) => !adjacentDigits(i, 4))
+    lower until upper filter doesntDecrease count ((i: Int) => moreThanTwo(i.toString))
   }
 
   @tailrec
