@@ -51,7 +51,7 @@ class SecureContainerSpec extends FlatSpec with Matchers {
     val input = "112443-112446"
     val output = SecureContainer.numPassords(input)
 
-    output shouldBe 1
+    output shouldBe 2
   }
 
   "onlyTwo" should "return false for increasing digits" in {
