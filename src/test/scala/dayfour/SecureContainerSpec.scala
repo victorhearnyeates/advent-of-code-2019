@@ -54,7 +54,7 @@ class SecureContainerSpec extends FlatSpec with Matchers {
     output shouldBe 1
   }
 
-  "onlyThree" should "return false for increasing digits" in {
+  "onlyTwo" should "return false for increasing digits" in {
     val input = "123456"
     val output = SecureContainer.moreThanTwo(input)
 
@@ -87,6 +87,27 @@ class SecureContainerSpec extends FlatSpec with Matchers {
 
   it should "not contain larger groups" in {
     val input = "111123"
+    val output = SecureContainer.moreThanTwo(input)
+
+    assert(!output)
+  }
+
+  it should "contain larger groups and individuals" in {
+    val input = "111122"
+    val output = SecureContainer.moreThanTwo(input)
+
+    assert(output)
+  }
+
+  it should "return true for 112233" in {
+    val input = "112233"
+    val output = SecureContainer.moreThanTwo(input)
+
+    assert(output)
+  }
+
+  it should "return false for 123444" in {
+    val input = "123444"
     val output = SecureContainer.moreThanTwo(input)
 
     assert(!output)

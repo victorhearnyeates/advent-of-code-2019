@@ -22,11 +22,14 @@ object SecureContainer {
   }
 
   @tailrec
-  def moreThanTwo(num: String, lastNum: Option[Char] = None, isTrue: Boolean = false): Boolean = num match {
-    case "" => isTrue
-    case x if firstLetterMatches(num.headOption, lastNum) => moreThanTwo(x.substring(1), x.headOption, !isTrue)
-    case other => moreThanTwo(other.substring(1), other.headOption, isTrue)
-  }
+  def moreThanTwo(num: String, lastNum: Option[Char] = None, acc: Int = 1): Boolean = {
+    val nextNum = num.headOption
 
-  private def firstLetterMatches(firstLetter: Option[Char], last: Option[Char]): Boolean = firstLetter == last
+    num match {
+      case _ if acc == 2 && nextNum != lastNum => true
+      case x if nextNum == lastNum => moreThanTwo(x.substring(1), x.headOption, acc + 1)
+      case "" => false
+      case other => moreThanTwo(other.substring(1), other.headOption)
+    }
+  }
 }
